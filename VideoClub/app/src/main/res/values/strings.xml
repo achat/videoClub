@@ -3,4 +3,5 @@
     <string name="sign_in_title">VideoClub</string>
     <string name="sign_in_hint">Enter your username</string>
     <string name="sign_in_button_text">sign in</string>
+    <string name="sign_in_continue_text">continue as %s</string>
 </resources>
