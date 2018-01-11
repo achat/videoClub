@@ -23,8 +23,11 @@ public interface MovieDao {
     void insertMovie(Movie movie);
 
     @Insert
-    void insertAllMovies(Movie... movies);
+    void insertAllMovies(List<Movie> movies);
 
     @Delete
     void deleteMovie(Movie movie);
+
+    @Query("DELETE FROM movie")
+    void deleteAll();
 }

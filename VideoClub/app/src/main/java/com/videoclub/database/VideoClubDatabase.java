@@ -16,7 +16,7 @@ import com.videoclub.entity.User;
  * Created by Kostas on 1/10/2018.
  */
 
-@Database(entities = {User.class, Movie.class, Reservation.class}, version = 3)
+@Database(entities = {User.class, Movie.class, Reservation.class}, version = 4)
 public abstract class VideoClubDatabase extends RoomDatabase{
 
     private static VideoClubDatabase INSTANCE;
@@ -28,7 +28,8 @@ public abstract class VideoClubDatabase extends RoomDatabase{
     public static VideoClubDatabase getVideoClubDatabase(Context context){
         if(INSTANCE == null){
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), VideoClubDatabase.class, "video-club-database")
-                .build();
+                    .fallbackToDestructiveMigration()
+                    .build();
         }
 
         return INSTANCE;

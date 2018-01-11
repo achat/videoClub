@@ -30,6 +30,8 @@ public class Movie {
     @ColumnInfo(name = "price")
     private int price;
 
+    private int thumbnail;
+
     public int getMovieId() {
         return movieId;
     }
@@ -76,5 +78,13 @@ public class Movie {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(int thumbnail) {
+        this.thumbnail = thumbnail;
     }
 }

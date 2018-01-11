@@ -7,4 +7,5 @@
     <string name="sign_in_input_error">Invalid username!</string>
 
     <string name="home_title">Available movies</string>
+    <string name="movie__item_content_desc">Movie thumbnail</string>
 </resources>
