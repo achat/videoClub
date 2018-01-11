@@ -1,11 +1,13 @@
 package com.videoclub.ui.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.videoclub.data.helpers.Constants;
 import com.videoclub.ui.adapters.MovieAdapter;
 import com.videoclub.R;
 import com.videoclub.data.database.VideoClubDatabase;
@@ -14,7 +16,7 @@ import com.videoclub.data.helpers.DummyItem;
 
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements MovieAdapter.MovieSelectionListener {
     // Logging tag.
     private static final String TAG = HomeActivity.class.getSimpleName();
 
@@ -26,6 +28,13 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         setupUi();
+    }
+
+    @Override
+    public void onMovieClicked(Movie selectedMovie) {
+        Intent intent = new Intent(this, InfoActivity.class);
+        intent.putExtra(Constants.EXTRA_MOVIE_TITLE, selectedMovie.getName());
+        startActivity(intent);
     }
 
     private void setupUi(){
@@ -48,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
                 videoClubDatabase.movieDao().insertAllMovies(list);
             }
             // Now populate the adapter.
-            MovieAdapter adapter = new MovieAdapter(list);
+            MovieAdapter adapter = new MovieAdapter(list, HomeActivity.this);
             recyclerView.setAdapter(adapter);
         }).start();
     }

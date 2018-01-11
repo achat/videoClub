@@ -2,6 +2,7 @@ package com.videoclub.ui.adapters;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +15,18 @@ import com.videoclub.data.database.entity.Movie;
 import java.util.List;
 
 /**
- * Created by Kostas on 1/11/2018.
+ * Adapter class for populating the recycler with movies.
  */
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
+    private static final String TAG = MovieAdapter.class.getSimpleName();
     private List<Movie> movies;
+    private MovieSelectionListener movieSelectionListener;
 
-    public MovieAdapter(List<Movie> movies){
+    public MovieAdapter(List<Movie> movies, MovieSelectionListener movieSelectionListener){
         this.movies = movies;
+        this.movieSelectionListener = movieSelectionListener;
     }
 
     @Override
@@ -49,17 +53,28 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
         MovieViewHolder(View itemView) {
             super(itemView);
-            // Set a listener to the view.
-            CardView cardView = (CardView) itemView;
-            cardView.setOnClickListener(this);
-
+            // Set a listener to the thumbnail.
             txtTitle = itemView.findViewById(R.id.movie_item_title);
             imgThumbnail = itemView.findViewById(R.id.movie_item_thumbnail);
+            // Set a listener to the thumbnail.
+            imgThumbnail.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-
+            // Get the corresponding movie.
+            Movie selectedMovie = movies.get(getAdapterPosition());
+            Log.d(TAG, "Movie selected: " + selectedMovie.getName());
+            // Inform the listener.
+            movieSelectionListener.onMovieClicked(selectedMovie);
         }
+    }
+
+    /**
+     * This interface is used to route action back to the activity when the user
+     * clicks on a movie for more information.
+     */
+    public interface MovieSelectionListener {
+        void onMovieClicked(Movie selectedMovie);
     }
 }
