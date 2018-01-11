@@ -5,4 +5,6 @@
     <string name="sign_in_button_text">sign in</string>
     <string name="sign_in_continue_text">continue as %s</string>
     <string name="sign_in_input_error">Invalid username!</string>
+
+    <string name="home_title">Available movies</string>
 </resources>

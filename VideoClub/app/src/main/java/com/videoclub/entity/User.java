@@ -12,6 +12,7 @@ import android.arch.persistence.room.PrimaryKey;
 public class User {
 
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "userid")
     private int userId;
 
     @ColumnInfo(name = "name")

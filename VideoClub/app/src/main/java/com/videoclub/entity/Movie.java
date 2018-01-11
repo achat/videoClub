@@ -12,6 +12,7 @@ import android.arch.persistence.room.PrimaryKey;
 public class Movie {
 
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "movieid")
     private int movieId;
 
     @ColumnInfo(name = "name")
