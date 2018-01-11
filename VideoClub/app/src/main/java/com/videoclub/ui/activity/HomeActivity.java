@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.videoclub.data.database.entity.User;
 import com.videoclub.data.helpers.Constants;
 import com.videoclub.ui.adapters.MovieAdapter;
 import com.videoclub.R;
@@ -21,11 +22,18 @@ public class HomeActivity extends AppCompatActivity implements MovieAdapter.Movi
     private static final String TAG = HomeActivity.class.getSimpleName();
 
     private RecyclerView recyclerView;
+    private String userName;
+    // TODO Remove static identifier in the future.
+    public static User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        // Get the username.
+        Intent intent = getIntent();
+        if (intent != null)
+            userName = intent.getStringExtra(Constants.ARG_CURRENT_USERNAME);
 
         setupUi();
     }
@@ -46,6 +54,8 @@ public class HomeActivity extends AppCompatActivity implements MovieAdapter.Movi
         // Check and populate the movies in the background.
         new Thread(() -> {
             VideoClubDatabase videoClubDatabase = VideoClubDatabase.getVideoClubDatabase(getApplicationContext());
+            // Set the current user.
+            currentUser = videoClubDatabase.userDao().getUser(userName);
             // Get all the movies.
             List<Movie> list = videoClubDatabase.movieDao().getAllMovies();
             // Check for emptiness.

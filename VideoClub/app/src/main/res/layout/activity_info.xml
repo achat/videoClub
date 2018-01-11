@@ -31,11 +31,11 @@
         android:textSize="16sp"/>
 
     <Button
-        android:id="@+id/info_movie_rent_button"
+        android:id="@+id/info_movie_reserve_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="@string/info_movie_rent"
+        android:text="@string/info_movie_reserve"
         android:backgroundTint="@color/colorPrimary"
         android:textColor="@android:color/white"/>
 
