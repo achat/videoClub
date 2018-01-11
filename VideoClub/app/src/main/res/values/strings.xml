@@ -8,4 +8,32 @@
 
     <string name="home_title">Available movies</string>
     <string name="movie__item_content_desc">Movie thumbnail</string>
+    <!-- Movie descriptions -->
+    <string name="lotr_description">
+            The Lord of the Rings is an epic high fantasy novel written by English author and scholar J. R. R. Tolkien.
+            The story began as a sequel to Tolkien\'s 1937 fantasy novel The Hobbit, but eventually developed into a much larger work.
+            Written in stages between 1937 and 1949, The Lord of the Rings is one of the best-selling novels ever written, with over 150 million copies sold.
+    </string>
+    <string name="matrix_description">
+            The Matrix is a 1999 science fiction action film written and directed by The Wachowskis (credited as The Wachowski Brothers)
+            and starring Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving, and Joe Pantoliano.
+            It depicts a dystopian future in which reality as perceived by most humans is actually a simulated reality called "the Matrix", created by sentient machines to subdue the human population.
+    </string>
+    <string name="matrix_2_description">
+            The Matrix Reloaded is a 2003 science fiction action film, the first sequel to The Matrix, and the second installment in The Matrix trilogy, written and directed by The Wachowski Brothersnote.
+            It premiered on May 7, 2003, in Westwood, Los Angeles, California, and went on general release by Warner Bros. in North American theaters on May 15, 2003,
+            and around the world during the latter half of that month. It was also screened out of competition at the 2003 Cannes Film Festival.
+    </string>
+    <string name="matrix_3_description">
+            The Matrix Revolutions is a 2003 science fiction action film written and directed by The Wachowski Brothersnote.
+            It was the third installment of the Matrix trilogy, released six months following The Matrix Reloaded.
+            The film was released simultaneously in 60 countries on November 5, 2003. While it is the final film in the series, the Matrix storyline is continued in The Matrix Online.
+    </string>
+    <string name="inception_description">
+            Inception is a 2010 science fiction film written, co-produced, and directed by Christopher Nolan, and co-produced by Emma Thomas.
+            The film stars Leonardo DiCaprio as a professional thief who steals information by infiltrating the subconscious, and is offered a chance to have his criminal history erased as payment for the implantation of another person\'s idea into a target\'s subconscious.
+    </string>
+    <string name="info_movie_image_desc">Movie image description</string>
+    <string name="info_movie_rent">rent</string>
+    <string name="info_movie_category">Category: %s</string>
 </resources>

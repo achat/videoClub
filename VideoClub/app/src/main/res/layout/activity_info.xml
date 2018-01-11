@@ -1,8 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.widget.LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.videoclub.ui.activity.InfoActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/info_movie_image"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:scaleType="centerInside"
+        android:contentDescription="@string/info_movie_image_desc" />
+
+    <TextView
+        android:id="@+id/info_movie_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:padding="5dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/info_movie_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/info_movie_rent_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/info_movie_rent"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@android:color/white"/>
+
+</android.widget.LinearLayout>
