@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.videoclub.activity.HomeActivity">
+    tools:context=".ui.activity.HomeActivity">
 
     <TextView
         android:id="@+id/home_title"

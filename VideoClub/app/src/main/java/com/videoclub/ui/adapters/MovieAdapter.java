@@ -1,5 +1,6 @@
-package com.videoclub.adapters;
+package com.videoclub.ui.adapters;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.videoclub.R;
-import com.videoclub.entity.Movie;
+import com.videoclub.data.database.entity.Movie;
 
 import java.util.List;
 
@@ -42,14 +43,23 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         return movies.size();
     }
 
-    class MovieViewHolder extends RecyclerView.ViewHolder {
+    class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView txtTitle;
         ImageView imgThumbnail;
 
         MovieViewHolder(View itemView) {
             super(itemView);
+            // Set a listener to the view.
+            CardView cardView = (CardView) itemView;
+            cardView.setOnClickListener(this);
+
             txtTitle = itemView.findViewById(R.id.movie_item_title);
             imgThumbnail = itemView.findViewById(R.id.movie_item_thumbnail);
+        }
+
+        @Override
+        public void onClick(View view) {
+
         }
     }
 }

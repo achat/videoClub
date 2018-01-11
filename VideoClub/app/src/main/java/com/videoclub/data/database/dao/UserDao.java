@@ -1,11 +1,11 @@
-package com.videoclub.dao;
+package com.videoclub.data.database.dao;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
-import com.videoclub.entity.User;
+import com.videoclub.data.database.entity.User;
 
 import java.util.List;
 

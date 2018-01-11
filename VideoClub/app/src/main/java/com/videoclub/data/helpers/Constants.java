@@ -1,4 +1,4 @@
-package com.videoclub.helpers;
+package com.videoclub.data.helpers;
 
 /**
  * Constants for global access.

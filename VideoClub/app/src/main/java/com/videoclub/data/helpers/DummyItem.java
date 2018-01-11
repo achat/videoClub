@@ -1,7 +1,7 @@
-package com.videoclub.helpers;
+package com.videoclub.data.helpers;
 
 import com.videoclub.R;
-import com.videoclub.entity.Movie;
+import com.videoclub.data.database.entity.Movie;
 
 import java.util.ArrayList;
 import java.util.List;

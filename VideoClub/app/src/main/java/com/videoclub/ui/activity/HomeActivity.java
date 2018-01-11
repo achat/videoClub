@@ -1,4 +1,4 @@
-package com.videoclub.activity;
+package com.videoclub.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,11 +6,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.videoclub.adapters.MovieAdapter;
+import com.videoclub.ui.adapters.MovieAdapter;
 import com.videoclub.R;
-import com.videoclub.database.VideoClubDatabase;
-import com.videoclub.entity.Movie;
-import com.videoclub.helpers.DummyItem;
+import com.videoclub.data.database.VideoClubDatabase;
+import com.videoclub.data.database.entity.Movie;
+import com.videoclub.data.helpers.DummyItem;
 
 import java.util.List;
 

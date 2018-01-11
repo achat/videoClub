@@ -1,4 +1,4 @@
-package com.videoclub.activity;
+package com.videoclub.ui.activity;
 
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
@@ -11,9 +11,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.videoclub.R;
-import com.videoclub.database.VideoClubDatabase;
-import com.videoclub.entity.User;
-import com.videoclub.helpers.Constants;
+import com.videoclub.data.database.VideoClubDatabase;
+import com.videoclub.data.database.entity.User;
+import com.videoclub.data.helpers.Constants;
 
 import java.util.List;
 

@@ -1,16 +1,16 @@
-package com.videoclub.database;
+package com.videoclub.data.database;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-import com.videoclub.dao.MovieDao;
-import com.videoclub.dao.ReservationDao;
-import com.videoclub.dao.UserDao;
-import com.videoclub.entity.Movie;
-import com.videoclub.entity.Reservation;
-import com.videoclub.entity.User;
+import com.videoclub.data.database.dao.MovieDao;
+import com.videoclub.data.database.dao.ReservationDao;
+import com.videoclub.data.database.dao.UserDao;
+import com.videoclub.data.database.entity.Movie;
+import com.videoclub.data.database.entity.Reservation;
+import com.videoclub.data.database.entity.User;
 
 /**
  * Created by Kostas on 1/10/2018.
