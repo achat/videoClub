@@ -7,6 +7,8 @@
     android:orientation="vertical"
     tools:context="com.videoclub.ui.activity.InfoActivity">
 
+    <include layout="@layout/toolbar"/>
+
     <ImageView
         android:id="@+id/info_movie_image"
         android:layout_width="match_parent"

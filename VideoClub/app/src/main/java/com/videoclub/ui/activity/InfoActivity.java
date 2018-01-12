@@ -3,6 +3,7 @@ package com.videoclub.ui.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -81,6 +82,10 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setupUi() {
+        // Setup action bar.
+        Toolbar toolbar = findViewById(R.id.app_toolbar);
+        toolbar.setTitle(movieTitle);
+        setSupportActionBar(toolbar);
         // Add click handler to reserve button.
         btnReserve = findViewById(R.id.info_movie_reserve_button);
         btnReserve.setOnClickListener(this);
