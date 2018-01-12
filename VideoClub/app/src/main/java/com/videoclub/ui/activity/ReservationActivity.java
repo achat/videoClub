@@ -2,6 +2,7 @@ package com.videoclub.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -39,6 +40,7 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
         // Setup recycler view.
         RecyclerView recyclerView = findViewById(R.id.reservation_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         // Set fixed size for better performance.
         recyclerView.setHasFixedSize(true);
         // Check and populate the movies in the background.
