@@ -51,8 +51,10 @@ public class HomeActivity extends AppCompatActivity implements MovieAdapter.Movi
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                Log.d(TAG, "Settings selected");
+            case R.id.action_reservations:
+                Log.d(TAG, "Reservations clicked");
+                Intent intent = new Intent(this, ReservationActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

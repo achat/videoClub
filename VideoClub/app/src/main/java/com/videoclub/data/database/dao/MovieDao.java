@@ -23,6 +23,9 @@ public interface MovieDao {
     @Query("SELECT * FROM movie WHERE name=:movieTitle")
     Movie getMovie(String movieTitle);
 
+    @Query("SELECT name FROM movie WHERE movieid=:movieId")
+    String getMovieTitleById(int movieId);
+
     @Insert
     void insertMovie(Movie movie);
 

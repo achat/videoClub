@@ -37,4 +37,6 @@
     <string name="info_movie_reserve">reserve</string>
     <string name="info_movie_category">Category: %s / Copies left: %d</string>
     <string name="action_reservations">Reservations</string>
+    <string name="title_activity_reservation">Your reservations</string>
+    <string name="action_settings">Settings</string>
 </resources>
