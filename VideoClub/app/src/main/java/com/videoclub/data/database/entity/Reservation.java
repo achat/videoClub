@@ -38,6 +38,12 @@ public class Reservation {
     @ColumnInfo(name = "movieid")
     private int movieId;
 
+    @ColumnInfo(name = "movie_title")
+    private String movieTitle;
+
+    @ColumnInfo(name = "status")
+    private int status;
+
     public int getReservationId() {
         return reservationId;
     }
@@ -60,5 +66,21 @@ public class Reservation {
 
     public void setMovieId(int movieId) {
         this.movieId = movieId;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getMovieTitle() {
+        return movieTitle;
+    }
+
+    public void setMovieTitle(String movieTitle) {
+        this.movieTitle = movieTitle;
     }
 }

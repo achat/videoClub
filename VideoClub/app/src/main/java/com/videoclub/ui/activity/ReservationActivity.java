@@ -48,21 +48,16 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
             videoClubDatabase = VideoClubDatabase.getVideoClubDatabase(getApplicationContext());
             // Get all the movies.
             List<Reservation> reservations = videoClubDatabase.reservationDao().getAllReservations();
-            // We'll have to create a second list with the movie names. We could just save the
-            // information to Reservation class, too.
-            List<String> reservedMovieTitles = new ArrayList<>();
             // List to set the adapter.
             List<Reservation> userReservations = new ArrayList<>();
             // Choose only the current user's reservations.
             for (Reservation res: reservations) {
                 if (res.getUserId() == HomeActivity.currentUser.getUserId()) {
                     userReservations.add(res);
-                    String title = videoClubDatabase.movieDao().getMovieTitleById(res.getMovieId());
-                    reservedMovieTitles.add(title);
                 }
             }
             // Now populate the adapter.
-            ReservationAdapter adapter = new ReservationAdapter(userReservations, reservedMovieTitles, ReservationActivity.this);
+            ReservationAdapter adapter = new ReservationAdapter(userReservations, ReservationActivity.this);
             recyclerView.setAdapter(adapter);
         }).start();
     }

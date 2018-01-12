@@ -1,5 +1,6 @@
 package com.videoclub.ui.activity;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -56,6 +57,8 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
             }
             Reservation reservation = new Reservation();
             reservation.setMovieId(movie.getMovieId());
+            reservation.setMovieTitle(movieTitle);
+            reservation.setStatus(Constants.RESERVATION_UNPAID);
             reservation.setUserId(HomeActivity.currentUser.getUserId());
 
             videoClubDatabase.reservationDao().insertReservation(reservation);

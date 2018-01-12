@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.videoclub.R;
 import com.videoclub.data.database.entity.Reservation;
+import com.videoclub.data.helpers.Constants;
 
 import java.util.List;
 
@@ -21,12 +22,10 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
 
     private static final String TAG = ReservationAdapter.class.getSimpleName();
     private List<Reservation> reservationList;
-    private List<String> reservedMovies;
     private ReservationListener reservationListener;
 
-    public ReservationAdapter(List<Reservation> reservationList, List<String> reservedMovies, ReservationListener reservationListener){
+    public ReservationAdapter(List<Reservation> reservationList, ReservationListener reservationListener){
         this.reservationList = reservationList;
-        this.reservedMovies = reservedMovies;
         this.reservationListener = reservationListener;
     }
 
@@ -42,7 +41,14 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
         // Set numbering, start from 1.
         holder.txtCount.setText(String.valueOf(position + 1));
         // Set the movie title.
-        holder.txtMovieTitle.setText(reservedMovies.get(position));
+        holder.txtMovieTitle.setText(res.getMovieTitle());
+        // Now set the button according to the reservation's status.
+        if (res.getStatus() == Constants.RESERVATION_PAID) {
+            holder.btnPrepay.setText(R.string.reservation_title_paid);
+            holder.btnPrepay.setEnabled(false);
+        } else {
+            holder.btnPrepay.setText(R.string.reservation_title_unpaid);
+        }
     }
 
     @Override
