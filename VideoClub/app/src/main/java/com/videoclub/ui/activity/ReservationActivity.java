@@ -1,5 +1,6 @@
 package com.videoclub.ui.activity;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -29,7 +30,11 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
 
     @Override
     public void onPrepayReservation(Reservation reservation) {
+        new Thread(() -> {
+            videoClubDatabase.reservationDao().updateReservation(reservation);
+        }).start();
 
+        Snackbar.make(findViewById(R.id.reservation_container), R.string.reservation_prepay_message, Snackbar.LENGTH_SHORT).show();
     }
 
     private void setupUi(){

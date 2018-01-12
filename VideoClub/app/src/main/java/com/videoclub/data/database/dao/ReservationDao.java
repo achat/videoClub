@@ -4,6 +4,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
 import com.videoclub.data.database.entity.Reservation;
 
@@ -21,6 +22,9 @@ public interface ReservationDao {
 
     @Insert
     void insertReservation(Reservation reservation);
+
+    @Update
+    void updateReservation(Reservation reservation);
 
     @Insert
     void insertAllReservations(Reservation... reservation);

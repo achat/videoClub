@@ -75,7 +75,12 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
         public void onClick(View view) {
             // Get the corresponding reservation.
             Reservation selectedReservation = reservationList.get(getAdapterPosition());
+            // Change its status.
+            selectedReservation.setStatus(Constants.RESERVATION_PAID);
             Log.d(TAG, "Reservation to prepay: " + selectedReservation.getMovieId());
+            // Update UI item.
+            btnPrepay.setText(R.string.reservation_title_paid);
+            btnPrepay.setEnabled(false);
             // Inform the listener.
             reservationListener.onPrepayReservation(selectedReservation);
         }
