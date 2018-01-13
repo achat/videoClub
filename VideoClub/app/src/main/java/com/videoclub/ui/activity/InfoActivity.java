@@ -74,6 +74,8 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 Log.d(TAG, "Copies of " + movieTitle + " left: " + movie.getCopies());
             }
+            TextView movieCategory = findViewById(R.id.info_movie_category);
+            movieCategory.post(() -> movieCategory.setText(String.format(getString(R.string.info_movie_category), movie.getCategory(), movie.getCopies())));
             // Update database.
             videoClubDatabase.movieDao().updateMovie(movie);
             // Show confirmation message to the user.

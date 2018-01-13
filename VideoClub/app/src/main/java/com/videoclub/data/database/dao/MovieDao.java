@@ -23,21 +23,12 @@ public interface MovieDao {
     @Query("SELECT * FROM movie WHERE name=:movieTitle")
     Movie getMovie(String movieTitle);
 
-    @Query("SELECT name FROM movie WHERE movieid=:movieId")
-    String getMovieTitleById(int movieId);
-
-    @Insert
-    void insertMovie(Movie movie);
+    @Query("SELECT * FROM movie WHERE movieid=:movieId")
+    Movie getMovieById(int movieId);
 
     @Insert
     void insertAllMovies(List<Movie> movies);
 
     @Update
     void updateMovie(Movie movie);
-    
-    @Delete
-    void deleteMovie(Movie movie);
-
-    @Query("DELETE FROM movie")
-    void deleteAll();
 }

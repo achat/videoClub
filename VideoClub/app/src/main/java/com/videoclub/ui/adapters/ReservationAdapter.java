@@ -56,7 +56,16 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
         return reservationList.size();
     }
 
-    class ResViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public void removeReservation(Reservation reservation) {
+        if (reservation != null) {
+            // Remove from the list.
+            reservationList.remove(reservation);
+            // Update UI.
+            notifyDataSetChanged();
+        }
+    }
+
+    class ResViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         TextView txtCount;
         TextView txtMovieTitle;
         Button btnPrepay;
@@ -66,6 +75,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
             // Get references.
             txtCount = itemView.findViewById(R.id.reservation_count);
             txtMovieTitle = itemView.findViewById(R.id.reservation_movie_title);
+            txtMovieTitle.setOnLongClickListener(this);
             btnPrepay = itemView.findViewById(R.id.reservation_prepay_button);
             // Set a listener to the prepay button.
             btnPrepay.setOnClickListener(this);
@@ -84,6 +94,16 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
             // Inform the listener.
             reservationListener.onPrepayReservation(selectedReservation);
         }
+
+        @Override
+        public boolean onLongClick(View view) {
+            // Get the corresponding reservation.
+            Reservation selectedReservation = reservationList.get(getAdapterPosition());
+            // Route to listener.
+            reservationListener.onCancelReservation(selectedReservation);
+
+            return true;
+        }
     }
 
     /**
@@ -92,5 +112,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
      */
     public interface ReservationListener {
         void onPrepayReservation(Reservation reservation);
+
+        void onCancelReservation(Reservation reservation);
     }
 }

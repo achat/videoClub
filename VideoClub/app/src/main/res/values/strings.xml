@@ -43,4 +43,8 @@
     <string name="reservation_title_unpaid">pay</string>
     <string name="reservation_prepay_message">Thanks for prepaying your reservation!</string>
     <string name="info_movie_rating_thx">Thanks for rating!</string>
+    <string name="reservation_cancel_msg">Do you want to cancel this reservation?</string>
+    <string name="reservation_cancelled_paid">Reservation cancelled. We will return your money some day.</string>
+    <string name="reservation_cancelled_unpaid">Reservation cancelled.</string>
+    <string name="reservation_cancel_title">Confirmation</string>
 </resources>
