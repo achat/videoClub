@@ -30,7 +30,11 @@ public class Movie {
     @ColumnInfo(name = "price")
     private int price;
 
+    @ColumnInfo(name = "thumbnail")
     private int thumbnail;
+
+    @ColumnInfo(name = "rating")
+    private float rating;
 
     public int getMovieId() {
         return movieId;
@@ -86,5 +90,13 @@ public class Movie {
 
     public void setThumbnail(int thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
     }
 }

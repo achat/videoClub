@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
     private Movie movie;
 
     private Button btnReserve;
+    private RatingBar ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,17 +94,21 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
         // Add click handler to reserve button.
         btnReserve = findViewById(R.id.info_movie_reserve_button);
         btnReserve.setOnClickListener(this);
+        // Rating Bar
+        ratingBar = findViewById(R.id.info_movie_rating);
 
         new Thread(() -> {
             videoClubDatabase = VideoClubDatabase.getVideoClubDatabase(getApplicationContext());
             // Get the corresponding movie.
             movie = videoClubDatabase.movieDao().getMovie(movieTitle);
             // Initialize UI elements accordingly.
+            ratingBar.setRating(movie.getRating());
             ImageView movieImage = findViewById(R.id.info_movie_image);
             movieImage.setImageResource(movie.getThumbnail());
             TextView movieCategory = findViewById(R.id.info_movie_category);
             movieCategory.setText(String.format(getString(R.string.info_movie_category), movie.getCategory(), movie.getCopies()));
             TextView movieDescription = findViewById(R.id.info_movie_description);
+
             switch (movie.getMovieId()) {
                 case 1:
                     movieDescription.setText(R.string.lotr_description);

@@ -16,7 +16,7 @@ import com.videoclub.data.database.entity.User;
  * Created by Kostas on 1/10/2018.
  */
 
-@Database(entities = {User.class, Movie.class, Reservation.class}, version = 5)
+@Database(entities = {User.class, Movie.class, Reservation.class}, version = 6)
 public abstract class VideoClubDatabase extends RoomDatabase{
 
     private static VideoClubDatabase INSTANCE;

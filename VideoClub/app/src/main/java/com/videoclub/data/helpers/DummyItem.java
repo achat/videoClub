@@ -22,6 +22,7 @@ public class DummyItem {
         movie1.setCopies(10);
         movie1.setPrice(15);
         movie1.setThumbnail(R.drawable.lotr_thumbnail);
+        movie1.setRating((float)4.6);
         dummyMovies.add(movie1);
 
         Movie movie2 = new Movie();
@@ -31,6 +32,7 @@ public class DummyItem {
         movie2.setCopies(10);
         movie2.setPrice(5);
         movie2.setThumbnail(R.drawable.matrix_thumbnail);
+        movie2.setRating((float)4.2);
         dummyMovies.add(movie2);
 
         Movie movie3 = new Movie();
@@ -40,6 +42,7 @@ public class DummyItem {
         movie3.setCopies(10);
         movie3.setPrice(15);
         movie3.setThumbnail(R.drawable.matrix_thumbnail);
+        movie3.setRating((float)4.0);
         dummyMovies.add(movie3);
 
         Movie movie4 = new Movie();
@@ -49,6 +52,7 @@ public class DummyItem {
         movie4.setCopies(15);
         movie4.setPrice(3);
         movie4.setThumbnail(R.drawable.matrix_thumbnail);
+        movie4.setRating((float)3.9);
         dummyMovies.add(movie4);
 
         Movie movie5 = new Movie();
@@ -58,6 +62,7 @@ public class DummyItem {
         movie5.setCopies(10);
         movie5.setPrice(15);
         movie5.setThumbnail(R.drawable.inception_thumbnail);
+        movie5.setRating((float)3.6);
         dummyMovies.add(movie5);
 
         return dummyMovies;
