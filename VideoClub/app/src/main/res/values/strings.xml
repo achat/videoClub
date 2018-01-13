@@ -47,4 +47,10 @@
     <string name="reservation_cancelled_paid">Reservation cancelled. We will return your money some day.</string>
     <string name="reservation_cancelled_unpaid">Reservation cancelled.</string>
     <string name="reservation_cancel_title">Confirmation</string>
+    <string name="action_feedback_title">Feedback</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="feedback_submit_title">submit</string>
+    <string name="feedback_thx">Thank you for your feedback!</string>
 </resources>

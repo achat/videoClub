@@ -4,4 +4,9 @@
     <item android:id="@+id/action_reservations"
         android:title="@string/action_reservations"
         app:showAsAction="never"/>
+
+    <item android:id="@+id/action_feedback"
+        android:title="@string/action_feedback_title"
+        android:icon="@android:drawable/ic_dialog_email"
+        app:showAsAction="ifRoom"/>
 </menu>

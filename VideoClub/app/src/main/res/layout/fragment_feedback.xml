@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="com.videoclub.ui.activity.FeedbackFragment">
+
+    <TextView
+        android:id="@+id/feedback_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/feedback_edit_text"
+        android:text="@string/action_feedback_title"
+        android:textSize="26sp"
+        android:textColor="@color/colorPrimary"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/feedback_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/feedback_title"
+        android:layout_marginTop="30dp"
+        android:inputType="text"
+        android:maxLines="5" />
+
+    <Button
+        android:id="@+id/feedback_submit_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/feedback_edit_text"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:text="@string/feedback_submit_title"/>
+
+</RelativeLayout>

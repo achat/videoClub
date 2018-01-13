@@ -1,6 +1,9 @@
 package com.videoclub.ui.activity;
 
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,7 +23,8 @@ import com.videoclub.data.helpers.DummyItem;
 
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity implements MovieAdapter.MovieSelectionListener {
+public class HomeActivity extends AppCompatActivity implements MovieAdapter.MovieSelectionListener,
+    FeedbackFragment.OnFeedbackSubmitListener {
     // Logging tag.
     private static final String TAG = HomeActivity.class.getSimpleName();
 
@@ -56,6 +60,9 @@ public class HomeActivity extends AppCompatActivity implements MovieAdapter.Movi
                 Intent intent = new Intent(this, ReservationActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.action_feedback:
+                showFeedbackDialog();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -66,6 +73,13 @@ public class HomeActivity extends AppCompatActivity implements MovieAdapter.Movi
         Intent intent = new Intent(this, InfoActivity.class);
         intent.putExtra(Constants.EXTRA_MOVIE_TITLE, selectedMovie.getName());
         startActivity(intent);
+    }
+
+    private void showFeedbackDialog() {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(FeedbackFragment.newInstance(), FeedbackFragment.class.getSimpleName());
+        transaction.commit();
     }
 
     private void setupUi(){
@@ -96,5 +110,10 @@ public class HomeActivity extends AppCompatActivity implements MovieAdapter.Movi
             MovieAdapter adapter = new MovieAdapter(list, HomeActivity.this);
             recyclerView.setAdapter(adapter);
         }).start();
+    }
+
+    @Override
+    public void onFeedbackSubmitted() {
+        Snackbar.make(findViewById(R.id.home_container), R.string.feedback_thx, Snackbar.LENGTH_SHORT).show();
     }
 }
