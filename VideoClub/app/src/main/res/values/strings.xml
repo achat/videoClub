@@ -42,4 +42,5 @@
     <string name="reservation_title_paid">paid</string>
     <string name="reservation_title_unpaid">pay</string>
     <string name="reservation_prepay_message">Thanks for prepaying your reservation!</string>
+    <string name="info_movie_rating_thx">Thanks for rating!</string>
 </resources>

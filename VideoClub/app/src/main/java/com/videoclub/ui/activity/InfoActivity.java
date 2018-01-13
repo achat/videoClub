@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.videoclub.R;
 import com.videoclub.data.database.VideoClubDatabase;
 import com.videoclub.data.database.entity.Movie;
+import com.videoclub.data.database.entity.Rating;
 import com.videoclub.data.database.entity.Reservation;
 import com.videoclub.data.helpers.Constants;
 
@@ -103,6 +104,17 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
             movie = videoClubDatabase.movieDao().getMovie(movieTitle);
             // Initialize UI elements accordingly.
             ratingBar.setRating(movie.getRating());
+            ratingBar.setOnRatingBarChangeListener((ratingBar, v, b) -> {
+                // If this notification comes from the user...
+                if (b) {
+                   if (ratingBar.isIndicator()) {
+                       showMessage("You have already rated this movie!");
+                   } else {
+                       saveNewRating(v);
+                   }
+                }
+                // Else ignore...
+            });
             ImageView movieImage = findViewById(R.id.info_movie_image);
             movieImage.setImageResource(movie.getThumbnail());
             TextView movieCategory = findViewById(R.id.info_movie_category);
@@ -132,6 +144,57 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
             if (movie.getAvailable() != 1) {
                 btnReserve.setEnabled(false);
             }
+            checkIfUserRated();
         }).start();
+    }
+
+    private void checkIfUserRated() {
+        // Check if the user has already rated this movie.
+        List<Rating> ratings = videoClubDatabase.ratingDao().getAllRatings();
+        for (Rating rate: ratings) {
+            if (rate.getUserId() == HomeActivity.currentUser.getUserId() && rate.getMovieId() == movie.getMovieId()) {
+                ratingBar.setIsIndicator(true);
+                break;
+            }
+        }
+    }
+
+    private void saveNewRating(float rating) {
+        // Calculate new rating (We don't count in the number of votes for simplicity).
+        float newRating;
+        float currentRating = movie.getRating();
+        if (rating < currentRating) {
+            newRating = currentRating - (currentRating - rating) * (float) Constants.USER_RATING_WEIGHT;
+            // 0 is min.
+            if (newRating < 0.0) newRating = (float) 0.0;
+        } else if (rating > currentRating) {
+            newRating = currentRating + (rating - currentRating) * (float) Constants.USER_RATING_WEIGHT;
+            // 5 is max.
+            if (newRating > 5.0) newRating = (float) 5.0;
+        } else {
+            createRating();
+            ratingBar.setIsIndicator(true);
+            // The rating is the same.
+            showMessage(getString(R.string.info_movie_rating_thx));
+            return;
+        }
+        createRating();
+        // Set movie rating.
+        movie.setRating(newRating);
+        // Update UI.
+        ratingBar.setRating(newRating);
+        ratingBar.setIsIndicator(true);
+        // Update database.
+        new Thread(()-> videoClubDatabase.movieDao().updateMovie(movie)).start();
+        // Show message to user.
+        showMessage(getString(R.string.info_movie_rating_thx));
+    }
+
+    private void createRating() {
+        // Save as object in database.
+        Rating dbRating = new Rating();
+        dbRating.setMovieId(movie.getMovieId());
+        dbRating.setUserId(HomeActivity.currentUser.getUserId());
+        new Thread(()-> videoClubDatabase.ratingDao().insertRating(dbRating)).start();
     }
 }
