@@ -5,7 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 /**
- * Created by Kostas on 1/10/2018.
+ * Entity class for representing the users.
  */
 
 @Entity(tableName = "user")

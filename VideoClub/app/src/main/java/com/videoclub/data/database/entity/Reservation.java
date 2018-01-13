@@ -7,7 +7,9 @@ import android.arch.persistence.room.ForeignKey;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 /**
- * Created by Kostas on 1/10/2018.
+ *  Entity class for representing the reservations.
+ *
+ *  Each entry has two foreign keys, {@link Movie#movieId} and {@link User#userId}
  */
 
 @Entity(

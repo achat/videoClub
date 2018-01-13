@@ -1,6 +1,5 @@
 package com.videoclub.ui.activity;
 
-import android.arch.persistence.room.ColumnInfo;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -84,9 +83,7 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void showMessage(String message) {
-        runOnUiThread(() -> {
-            Toast.makeText(InfoActivity.this, message, Toast.LENGTH_SHORT).show();
-        });
+        runOnUiThread(() -> Toast.makeText(InfoActivity.this, message, Toast.LENGTH_SHORT).show());
     }
 
     private void setupUi() {

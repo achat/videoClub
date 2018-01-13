@@ -21,8 +21,8 @@ import java.util.List;
 public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.ResViewHolder> {
 
     private static final String TAG = ReservationAdapter.class.getSimpleName();
-    private List<Reservation> reservationList;
-    private ReservationListener reservationListener;
+    private final List<Reservation> reservationList;
+    private final ReservationListener reservationListener;
 
     public ReservationAdapter(List<Reservation> reservationList, ReservationListener reservationListener){
         this.reservationList = reservationList;
@@ -66,9 +66,9 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
     }
 
     class ResViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
-        TextView txtCount;
-        TextView txtMovieTitle;
-        Button btnPrepay;
+        final TextView txtCount;
+        final TextView txtMovieTitle;
+        final Button btnPrepay;
 
         ResViewHolder(View itemView) {
             super(itemView);

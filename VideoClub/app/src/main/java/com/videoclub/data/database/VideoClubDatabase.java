@@ -15,7 +15,7 @@ import com.videoclub.data.database.entity.Reservation;
 import com.videoclub.data.database.entity.User;
 
 /**
- * Created by Kostas on 1/10/2018.
+ * Database class representing the video club's database.
  */
 
 @Database(entities = {User.class, Movie.class, Reservation.class, Rating.class}, version = 7)
@@ -29,16 +29,12 @@ public abstract class VideoClubDatabase extends RoomDatabase{
     public abstract RatingDao ratingDao();
 
     public static VideoClubDatabase getVideoClubDatabase(Context context){
-        if(INSTANCE == null){
+        if (INSTANCE == null){
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), VideoClubDatabase.class, "video-club-database")
                     .fallbackToDestructiveMigration()
                     .build();
         }
 
         return INSTANCE;
-    }
-
-    public static void destroyInstance() {
-        INSTANCE = null;
     }
 }

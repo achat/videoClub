@@ -11,7 +11,7 @@ import com.videoclub.data.database.entity.Reservation;
 import java.util.List;
 
 /**
- * Created by Kostas on 1/11/2018.
+ * Class for accessing all the reservation-related operations.
  */
 
 @Dao
@@ -25,9 +25,6 @@ public interface ReservationDao {
 
     @Update
     void updateReservation(Reservation reservation);
-
-    @Insert
-    void insertAllReservations(Reservation... reservation);
 
     @Delete
     void deleteReservation(Reservation reservation);

@@ -21,7 +21,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     // Logging tag.
     private static final String TAG = SignInActivity.class.getSimpleName();
     // Database reference.
-    VideoClubDatabase videoClubDatabase;
+    private VideoClubDatabase videoClubDatabase;
     // UI elements.
     private Button btnContinue;
     private Button btnSignIn;
@@ -37,30 +37,24 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         // First handle UI related operations.
         setupUi();
         // Initialize database in the background.
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                videoClubDatabase = VideoClubDatabase.getVideoClubDatabase(getApplicationContext());
-                // First get all the available users.
-                List<User> users = videoClubDatabase.userDao().getAllUsers();
-                // If the list is not empty display the option to continue as the latest user.
-                if (!users.isEmpty()) {
-                    // Get the latest user.
-                    User latestUser = users.get(users.size() - 1);
-                    // Save the name.
-                    username = latestUser.getName();
-                    // Construct the string.
-                    final String title = String.format(getString(R.string.sign_in_continue_text), username);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Set the text.
-                            btnContinue.setText(title);
-                            // Make it visible.
-                            btnContinue.setVisibility(View.VISIBLE);
-                        }
-                    });
-                }
+        new Thread(() -> {
+            videoClubDatabase = VideoClubDatabase.getVideoClubDatabase(getApplicationContext());
+            // First get all the available users.
+            List<User> users = videoClubDatabase.userDao().getAllUsers();
+            // If the list is not empty display the option to continue as the latest user.
+            if (!users.isEmpty()) {
+                // Get the latest user.
+                User latestUser = users.get(users.size() - 1);
+                // Save the name.
+                username = latestUser.getName();
+                // Construct the string.
+                final String title = String.format(getString(R.string.sign_in_continue_text), username);
+                runOnUiThread(() -> {
+                    // Set the text.
+                    btnContinue.setText(title);
+                    // Make it visible.
+                    btnContinue.setVisibility(View.VISIBLE);
+                });
             }
         }).start();
     }
@@ -119,21 +113,18 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     private void insertUser(final String username) {
         if (videoClubDatabase != null) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    // First check if the user already exists.
-                    User user = videoClubDatabase.userDao().getUser(username);
-                    if (user == null) {
-                        // Create the user.
-                        User newUser = new User();
-                        newUser.setName(username);
-                        // Issue the database command.
-                        videoClubDatabase.userDao().insertUser(newUser);
-                        Log.d(TAG, "User " + username + " added.");
-                    } else {
-                        Log.d(TAG, "User already exists.");
-                    }
+            new Thread(() -> {
+                // First check if the user already exists.
+                User user = videoClubDatabase.userDao().getUser(username);
+                if (user == null) {
+                    // Create the user.
+                    User newUser = new User();
+                    newUser.setName(username);
+                    // Issue the database command.
+                    videoClubDatabase.userDao().insertUser(newUser);
+                    Log.d(TAG, "User " + username + " added.");
+                } else {
+                    Log.d(TAG, "User already exists.");
                 }
             }).start();
         }

@@ -34,9 +34,7 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
 
     @Override
     public void onPrepayReservation(Reservation reservation) {
-        new Thread(() -> {
-            videoClubDatabase.reservationDao().updateReservation(reservation);
-        }).start();
+        new Thread(() -> videoClubDatabase.reservationDao().updateReservation(reservation)).start();
 
         Snackbar.make(findViewById(R.id.reservation_container), R.string.reservation_prepay_message, Snackbar.LENGTH_SHORT).show();
     }
@@ -69,9 +67,7 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
                         Snackbar.make(findViewById(R.id.reservation_container), R.string.reservation_cancelled_unpaid, Snackbar.LENGTH_SHORT).show();
                     }
                 })
-                .setNegativeButton(android.R.string.no, (dialog, id) -> {
-                    dialog.cancel();
-                });
+                .setNegativeButton(android.R.string.no, (dialog, id) -> dialog.cancel());
 
         // Create and show the alert dialog.
         AlertDialog alertDialog = alertDialogBuilder.create();

@@ -1,6 +1,5 @@
 package com.videoclub.ui.adapters;
 
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,8 +20,8 @@ import java.util.List;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
     private static final String TAG = MovieAdapter.class.getSimpleName();
-    private List<Movie> movies;
-    private MovieSelectionListener movieSelectionListener;
+    private final List<Movie> movies;
+    private final MovieSelectionListener movieSelectionListener;
 
     public MovieAdapter(List<Movie> movies, MovieSelectionListener movieSelectionListener){
         this.movies = movies;
@@ -48,8 +47,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
     class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView txtTitle;
-        ImageView imgThumbnail;
+        final TextView txtTitle;
+        final ImageView imgThumbnail;
 
         MovieViewHolder(View itemView) {
             super(itemView);
