@@ -14,7 +14,7 @@ public class DummyItem {
 
     public static List<Movie> getDummyMovieList() {
         List<Movie> dummyMovies = new ArrayList<>();
-        // Create 5 dummy movies.
+        // Create dummy movies.
         Movie movie1 = new Movie();
         movie1.setName("Lord of the Rings");
         movie1.setCategory("Fantasy");
@@ -55,14 +55,34 @@ public class DummyItem {
         movie4.setRating((float)3.9);
         dummyMovies.add(movie4);
 
-        Movie movie5 = new Movie();
-        movie5.setName("Inception");
+	Movie movie5 = new Movie();
+        movie5.setName("Η");
         movie5.setCategory("Fantasy");
         movie5.setAvailable(1);
         movie5.setCopies(10);
         movie5.setPrice(15);
         movie5.setThumbnail(R.drawable.inception_thumbnail);
         movie5.setRating((float)3.6);
+        dummyMovies.add(movie5);
+
+	Movie movie5 = new Movie();
+        movie5.setName("Star Wars");
+        movie5.setCategory("Fantasy");
+        movie5.setAvailable(1);
+        movie5.setCopies(10);
+        movie5.setPrice(15);
+        movie5.setThumbnail(R.drawable.inception_thumbnail);
+        movie5.setRating((float)4.6);
+        dummyMovies.add(movie5);
+
+        Movie movie5 = new Movie();
+        movie5.setName("X-men");
+        movie5.setCategory("Fantasy");
+        movie5.setAvailable(1);
+        movie5.setCopies(10);
+        movie5.setPrice(10);
+        movie5.setThumbnail(R.drawable.inception_thumbnail);
+        movie5.setRating((float)3.8);
         dummyMovies.add(movie5);
 
         return dummyMovies;
