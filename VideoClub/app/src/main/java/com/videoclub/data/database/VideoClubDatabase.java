@@ -15,7 +15,7 @@ import com.videoclub.data.database.entity.Reservation;
 import com.videoclub.data.database.entity.User;
 
 /**
- * Database class representing the video club's database.
+ * Database class representing the video club's database
  */
 
 @Database(entities = {User.class, Movie.class, Reservation.class, Rating.class}, version = 7)
