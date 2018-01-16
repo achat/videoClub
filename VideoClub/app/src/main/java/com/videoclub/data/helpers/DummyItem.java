@@ -55,34 +55,14 @@ public class DummyItem {
         movie4.setRating((float)3.9);
         dummyMovies.add(movie4);
 
-	Movie movie5 = new Movie();
-        movie5.setName("Η");
+	    Movie movie5 = new Movie();
+        movie5.setName("Inception");
         movie5.setCategory("Fantasy");
         movie5.setAvailable(1);
         movie5.setCopies(10);
         movie5.setPrice(15);
         movie5.setThumbnail(R.drawable.inception_thumbnail);
         movie5.setRating((float)3.6);
-        dummyMovies.add(movie5);
-
-	Movie movie5 = new Movie();
-        movie5.setName("Star Wars");
-        movie5.setCategory("Fantasy");
-        movie5.setAvailable(1);
-        movie5.setCopies(10);
-        movie5.setPrice(15);
-        movie5.setThumbnail(R.drawable.inception_thumbnail);
-        movie5.setRating((float)4.6);
-        dummyMovies.add(movie5);
-
-        Movie movie5 = new Movie();
-        movie5.setName("X-men");
-        movie5.setCategory("Fantasy");
-        movie5.setAvailable(1);
-        movie5.setCopies(10);
-        movie5.setPrice(10);
-        movie5.setThumbnail(R.drawable.inception_thumbnail);
-        movie5.setRating((float)3.8);
         dummyMovies.add(movie5);
 
         return dummyMovies;
